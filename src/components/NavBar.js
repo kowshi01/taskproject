@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import Cartcontext from './store/CartContext';
 
 const NavBar = (props) => {
   
-
+ const ctx=useContext(Cartcontext)
   return (
     <Navbar bg="dark" data-bs-theme="dark" fixed="top">
     <Container>
@@ -17,7 +18,7 @@ const NavBar = (props) => {
       </Nav>
       <Nav>
       <Nav.Link href="#cart">
-        <Button variant="outline-primary" onClick={props.onOpen} >cart</Button>
+        <Button variant="outline-primary" onClick={props.onOpen} >cart {ctx.quantity}</Button>
       </Nav.Link>
       </Nav>
     </Container>

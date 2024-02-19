@@ -1,51 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Cartcontext from './store/CartContext';
 const Cart = (props) => {
-    const cartElements = [
-
-        {
-        
-        title: 'Colors',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        
-        quantity: 2,
-        
-        },
-        
-        {
-        
-        title: 'Black and white Colors',
-        
-        price: 50,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        
-        quantity: 3,
-        
-        },
-        
-        {
-        
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        quantity: 1,
-        
-        }
-        
-        ]
-        
+    const ctx=useContext(Cartcontext)  
         const showCart=(            
             <ListGroup className='my-3'>
-                    {cartElements.map((product)=>(
-                        <ListGroup.Item >
+                    {ctx.items.map((product)=>(
+                        <ListGroup.Item id={product.id} key={product.id}>
                             <div className='d-flex p-3'>
                                 <img src={product.imageUrl} alt='img' width={50}/>
                                 <h3 className='ps-3'>{product.title}</h3>
